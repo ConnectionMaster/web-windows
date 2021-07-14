@@ -1,24 +1,8 @@
 <?php
 include __DIR__ . '/../include/tools.php';
 
-$major_order = array('8.0', '7.4', '7.3', 'master');
+$major_order = array('7.4', '7.3');
 $minor_order = array(
-		'master' => array(
-				'nts-windows-vs16-x64',
-				'ts-windows-vs16-x64',
-				'nts-windows-vs16-x86',
-				'ts-windows-vs16-x86',
-				'nts-windows-vs16-x64-avx',
-				'ts-windows-vs16-x64-avx',
-		),
-		'8.0' => array(
-				'nts-windows-vs16-x64',
-				'ts-windows-vs16-x64',
-				'nts-windows-vs16-x86',
-				'ts-windows-vs16-x86',
-				'nts-windows-vs16-x64-avx',
-				'ts-windows-vs16-x64-avx',
-		),
 		'7.4' => array(
 				'nts-windows-vc15-x64',
 				'ts-windows-vc15-x64',
@@ -44,12 +28,6 @@ $labels = array(
 			'ts-windows-vc15-x64'  => 'VC15 x64 Thread Safe',
 			'nts-windows-vc15-x64-avx' => 'VC15 x64 AVX Non Thread Safe',
 			'ts-windows-vc15-x64-avx'  => 'VC15 x64 AVX Thread Safe',
-			'nts-windows-vs16-x86' => 'VS16 x86 Non Thread Safe',
-			'ts-windows-vs16-x86'  => 'VS16 x86 Thread Safe',
-			'nts-windows-vs16-x64' => 'VS16 x64 Non Thread Safe',
-			'ts-windows-vs16-x64'  => 'VS16 x64 Thread Safe',
-			'nts-windows-vs16-x64-avx' => 'VS16 x64 AVX Non Thread Safe',
-			'ts-windows-vs16-x64-avx'  => 'VS16 x64 AVX Thread Safe',
 );
 
 include TPL_PATH . 'header.php';
@@ -135,14 +113,18 @@ if (0) {
 			<a href="<?php echo $data[$major][$minor]['files']['php']['url']; ?>">Zip</a>
 			[<?php echo bytes2string($data[$major][$minor]['files']['php']['size']); ?>]<br />
 		</li>
+<?php if (isset($data[$major][$minor]['files']['debug'])):?>
 		<li>
 			<a href="<?php echo $data[$major][$minor]['files']['debug']['url']; ?>">Debug Pack</a>
 			[<?php echo bytes2string($data[$major][$minor]['files']['debug']['size']); ?>]<br />
 		</li>
+<?php endif?>
+<?php if (isset($data[$major][$minor]['files']['devel'])):?>
 		<li>
 			<a href="<?php echo $data[$major][$minor]['files']['devel']['url']; ?>">Development package (SDK to develop PHP extensions)</a>
 			[<?php echo bytes2string($data[$major][$minor]['files']['devel']['size']); ?>]<br />
 		</li>
+<?php endif?>
 <?php } else { ?>
 Build missing or in progress.
 

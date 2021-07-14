@@ -36,7 +36,7 @@ include __DIR__ . '/../include/listing.php';
 $baseurl = '/' . $dir_to_parse . '/';
 
 $versions = generate_listing($dir_to_parse, $nmode);
-$major_order = array('8.0', '7.4', '7.3');
+$major_order = array('8.1', '8.0', '7.4', '7.3');
 $minor_order = array(
 		'7.3' => array(
 			'nts-VC15-x64',
@@ -51,6 +51,12 @@ $minor_order = array(
 			'ts-vc15-x86'
 		),
 		'8.0' => array(
+			'nts-vs16-x64',
+			'ts-vs16-x64',
+			'nts-vs16-x86',
+			'ts-vs16-x86'
+		),
+		'8.1' => array(
 			'nts-vs16-x64',
 			'ts-vs16-x64',
 			'nts-vs16-x86',
@@ -157,14 +163,12 @@ if (isset($versions[$major]['test_pack'])) {
 		<li>
 			<a href="<?php echo $baseurl . $versions[$major][$minor]['zip']['path']; ?>">Zip</a>
 		[<?php echo $versions[$major][$minor]['zip']['size']; ?>]<br />
-<!--		<span class="md5sum">sha1: <?php echo $versions[$major][$minor]['zip']['sha1']; ?></span><br /> -->
 		<span class="md5sum">sha256: <?php echo $versions[$major][$minor]['zip']['sha256']; ?></span>
 		</li>
 <?php if (isset($versions[$major][$minor]['installer'])) { ?>
 		<li>
 			<a href="<?php echo $baseurl . $versions[$major][$minor]['installer']['path']; ?>">Installer</a>
 		[<?php echo $versions[$major][$minor]['installer']['size']; ?>]<br />
-<!--		<span class="md5sum">sha1: <?php echo $versions[$major][$minor]['installer']['sha1']; ?></span><br/ > -->
 		<span class="md5sum">sha256: <?php echo $versions[$major][$minor]['installer']['sha256']; ?></span>
 		</li>
 <?php } ?>
@@ -172,7 +176,6 @@ if (isset($versions[$major]['test_pack'])) {
 		<li>
 			<a href="<?php echo $baseurl . $versions[$major][$minor]['debug_pack']['path']; ?>">Debug Pack</a>
 		[<?php echo $versions[$major][$minor]['debug_pack']['size']; ?>]<br />
-<!--		<span class="md5sum">sha1: <?php echo $versions[$major][$minor]['debug_pack']['sha1']; ?></span><br/ > -->
 		<span class="md5sum">sha256: <?php echo $versions[$major][$minor]['debug_pack']['sha256']; ?></span>
 		</li>
 <?php } ?>
@@ -180,7 +183,6 @@ if (isset($versions[$major]['test_pack'])) {
 		<li>
 			<a href="<?php echo $baseurl . $versions[$major][$minor]['devel_pack']['path']; ?>">Development package (SDK to develop PHP extensions)</a>
 		[<?php echo $versions[$major][$minor]['devel_pack']['size']; ?>]<br />
-<!--		<span class="md5sum">sha1: <?php echo $versions[$major][$minor]['devel_pack']['sha1']; ?></span><br/ > -->
 		<span class="md5sum">sha256: <?php echo $versions[$major][$minor]['devel_pack']['sha256']; ?></span>
 		</li>
 <?php } ?>
